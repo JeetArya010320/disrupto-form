@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <div class="container">
+      <div class="back-arrow-wrap">
+        <div class="back-arrow">
+          <img src="https://cdn-microsites.indianexpress.com/storage/files/22bc4ecd49dd4a36148b.webp" alt="back-arrow">
+        </div>
+      </div>
+      <div class="progress-bar">
+        <div class="step">
+          <div class="bullet">
+            <span>1</span>
+          </div>
+          <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+          <div class="bullet">
+            <span>2</span>
+          </div>
+          <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+          <div class="bullet">
+            <span>3</span>
+          </div>
+          <div class="check fas fa-check"></div>
+        </div>
+      </div>
+
+      <div class="form-container">
+
+        <form>
+          <!-- page one -->
+          <div class="page slide-page pageOne">
+            <h2>Complete your profile</h2>
+            <p class="description">Lorium was an ancient village of ancient Etruria, Italy, on the Via Aurelia, 19 km
+              west
+              of Rome...</p>
+            <div class="form-group">
+              <label for="name">Name<span class="required">*</span></label>
+              <input type="text" id="name" placeholder="Name" required>
+              <span id="nameError" style="color:red;font-size: 14px;padding-left: 15px;"></span>
+            </div>
+            <div class="form-group">
+              <label for="mobile">Mobile Number<span class="required">*</span></label>
+              <div class="input-wrap mobile">
+                <input type="number" id="mobile" placeholder="Mobile No." required>
+                <span id="mobileError" style="color:red;font-size: 14px;padding-left: 15px;"></span>
+                <div class="verification-option">
+                  <button class="send-otp" id="send_otp_mobile">Send OTP</button>
+                  <span class="verified" id="verified_mobile"><img
+                      src="https://cdn-microsites.indianexpress.com/storage/files/059ba5035da68e136ee2.webp" alt="">
+                    Verified</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email<span class="required">*</span></label>
+              <div class="input-wrap email">
+                <input type="email" id="email" placeholder="Email" required>
+                <span id="emailError" style="color:red;font-size: 14px;padding-left: 15px;"></span>
+                <div class="verification-option">
+                  <button class="send-otp" id="send_otp_email">Send OTP</button>
+                  <span class="verified" id="verified_email"><img
+                      src="https://cdn-microsites.indianexpress.com/storage/files/059ba5035da68e136ee2.webp" alt="">
+                    Verified</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group otp-group hide">
+              <input type="text" maxlength="1" class="otp-input" required>
+              <input type="text" maxlength="1" class="otp-input" required>
+              <input type="text" maxlength="1" class="otp-input" required>
+              <input type="text" maxlength="1" class="otp-input" required>
+              <p class="resend">Did not receive OTP? <span>RESEND</span></p>
+            </div>
+            <button class="firstBtn continue-btn disable" type="submit">Continue</button>
+          </div>
+          <!-- page two -->
+          <div class="page pageTwo">
+            <h2>Add Your College Details</h2>
+            <p class="description">Lorium was an ancient village of ancient Etruria, Italy, on the Via Aurelia, 19 km
+              west
+              of Rome...</p>
+            <div class="input-flex-container">
+              <div class="form-group">
+                <label for="state">State<span class="required">*</span></label>
+                <div class="input-wrap">
+                  <select id="state" name="state">
+                    <option value="">Select State</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="mobile">City<span class="required">*</span></label>
+                <div class="input-wrap">
+                  <select id="city" name="city">
+                    <option value="">Select City</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="namcollegeNamee">College Name<span class="required">*</span></label>
+              <select id="collegeName" name="collegeName">
+                <option value="">Select an option</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="courseName">Course Name<span class="required">*</span></label>
+              <div class="input-wrap">
+                <select name="courseName" id="courseName">
+                  <option value="">Select an option</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="courseCompletion">Year of Course Completion<span class="required">*</span></label>
+              <div class="input-wrap">
+                <select name="courseCompletion" id="courseCompletion">
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                  <option value="2028">2028</option>
+                  <option value="2029">2029</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="currentyear">Currently in Which Year<span class="required">*</span></label>
+              <div class="input-wrap">
+                <select name="currentyear" id="currentyear">
+                  <option value="1st year">1st year</option>
+                  <option value="2nd year">2nd year</option>
+                  <option value="3rd year">3rd year</option>
+                  <option value="4th year">4th year</option>
+                  <option value="5th year">5th year</option>
+                  <option value="6th year">6th year</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="mobile">Upload photo/Selfie<span class="required">*</span></label>
+              <div class="input-wrap">
+                <input type="file" id="upload">
+              </div>
+            </div>
+            <div class="form-group">
+              <p class="upload-info">Please upload *pdf* and jpg files online. Maximum size of the file should be 256kb
+              </p>
+            </div>
+            <button class="secondBtn continue-btn" type="submit">Register</button>
+          </div>
+          <!-- page three -->
+          <div class="page pageThree">
+            <h2>Create Your Team: Add Member</h2>
+            <p class="description">Lorium was an ancient village of ancient Etruria, Italy, on the Via Aurelia, 19 km
+              west of Rome...</p>
+            <div class="inviteCards">
+              <div class="inviteList"></div>
+              <button class="seeMoreBtn">See More</button>
+            </div>
+            <div class="add-member-wrap">
+              <button id="addMemberBtn">Add a Member</button>
+            </div>
+            <div class="slide-form">
+              <div class="form-group">
+                <label for="teamMemberEmail">Team Member's email id<span class="required">*</span></label>
+                <div class="input-wrap">
+                  <input type="email" name="teamMemberEmail" id="teamMemberEmail">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="teamMemberMobile">Team Member's mobile number<span class="required">*</span></label>
+                <div class="input-wrap">
+                  <input type="number" name="teamMemberMobile" id="teamMemberMobile">
+                </div>
+              </div>
+              <button class="thirdBtn continue-btn" type="submit">Send Invite</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

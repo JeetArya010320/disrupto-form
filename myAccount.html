@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main-wrapper account-page">
+        <div class="container">
+            <div class="my-account-details">
+                <div class="back-arrow-wrap">
+                    <div class="back-arrow">
+                        <img src="https://cdn-microsites.indianexpress.com/storage/files/22bc4ecd49dd4a36148b.webp"
+                            alt="back-arrow">
+                    </div>
+                </div>
+                <h2>My Account</h2>
+                <p class="description">Lorium was an ancient village of ancient Etruria, Italy, on the Via Aurelia, 19
+                    km west of Rome...</p>
+                <div class="user-img">
+                    <img src="" alt="">
+                </div>
+                <div class="user-details">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="name">Name<span class="required">*</span></label>
+                            <input type="text" id="name" placeholder="Name" required="" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">Mobile Number<span class="required">*</span></label>
+                            <input type="text" id="mobile" placeholder="mobile" required="" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email<span class="required">*</span></label>
+                            <input type="text" id="email" placeholder="email" required="" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="collegeName">College Name<span class="required">*</span></label>
+                            <input type="text" id="collegeName" placeholder="collegeName" required="" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="courseName">Course Name<span class="required">*</span></label>
+                            <input type="text" id="courseName" placeholder="courseName" required="" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="passoutYear">Passout Year<span class="required">*</span></label>
+                            <input type="text" id="passoutYear" placeholder="passoutYear" required="" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="collegePincode">College Pincode<span class="required">*</span></label>
+                            <input type="text" id="collegePincode" placeholder="collegePincode" required="" disabled>
+                        </div>
+                    </form>
+                </div>
+                <div class="team-details">
+                    <h2>Team Details</h2>
+                    <h4>Request Sent</h4>
+                    <div class="requests">
+                        <div class="requestCards">
+                            <div class="requestList"></div>
+                            <button class="seeMoreBtnRequest">See More</button>
+                        </div>
+                    </div>
+                    <h4>Invites</h4>
+                    <div class="invites">
+                        <div class="inviteCards">
+                            <div class="inviteList"></div>
+                            <button class="seeMoreBtn">See More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const invitationsList = document.querySelector('.inviteList');
+        const seeMoreButton = document.querySelector('.seeMoreBtn');
+        const itemsPerLoad = 4;
+        const acceptRejectAPI = 'http://disrupto.indianexpress.com:5000/api/user/accept-request';
+
+        let visibleItems = 0;
+        let allInvitations = [];
+
+        async function fetchInvitations() {
+            const access_token = getCookie('access_token');
+            try {
+                const response = await fetch('http://disrupto.indianexpress.com:5000/api/user/view-request', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ access_token }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch invitations');
+                }
+
+                const data = await response.json();
+                return data.data;
+            } catch (error) {
+                console.error('Error fetching invitations:', error);
+                return [];
+            }
+        }
+
+        function createInvitation(invitation, index) {
+            console.log(invitation);
+            const { User } = invitation;
+            const inviteElement = document.createElement('div');
+            inviteElement.className = 'invite';
+            inviteElement.innerHTML = `
+    <div class="info">
+      <div class="name">${User.name} invited you.</div>
+      <div class="role">${User.email}</div>
+    </div>
+    <div class="action">
+      <button class="actionButton accept" data-index="${index}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="#4CAF50" stroke-width="2"/>
+          <path d="M8 12L11 15L16 9" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>Accept</div>
+      </button>
+      <button class="actionButton decline" data-index="${index}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="#666666" stroke-width="2"/>
+          <path d="M8 8L16 16M8 16L16 8" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>Decline</div>
+      </button>
+    </div>
+  `;
+            return inviteElement;
+        }
+
+        async function sendAcceptRejectRequest(user_id, type, user_request_id) {
+            const access_token = getCookie('access_token');
+            try {
+                const payload = {
+                    user_id,
+                    type,
+                    user_request_id,
+                    access_token,
+                };
+
+                const response = await fetch(acceptRejectAPI, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to accept/reject request');
+                }
+
+                const result = await response.json();
+                console.log('Action Success:', result);
+                return true;
+            } catch (error) {
+                console.error('Error in Accept/Reject API call:', error);
+                alert('Failed to perform the action. Please try again.');
+                return false;
+            }
+        }
+
+        async function loadMoreInvitations() {
+            if (allInvitations.length === 0) {
+                allInvitations = await fetchInvitations();
+            }
+
+            console.log(allInvitations);
+            const endIndex = Math.min(visibleItems + itemsPerLoad, allInvitations.length);
+            for (let i = visibleItems; i < endIndex; i++) {
+                console.log(allInvitations[i]);
+                const invitation = createInvitation(allInvitations[i], i);
+                invitationsList.appendChild(invitation);
+            }
+            visibleItems = endIndex;
+
+            if (visibleItems >= allInvitations.length) {
+                seeMoreButton.classList.add('hidden');
+            }
+
+            addEventListeners();
+        }
+
+        function addEventListeners() {
+            document.querySelectorAll('.accept, .decline').forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    const index = parseInt(e.currentTarget.dataset.index, 10);
+                    const type = e.currentTarget.classList.contains('accept') ? 0 : 1;
+                    const invitation = allInvitations[index];
+
+                    const success = await sendAcceptRejectRequest(invitation.user_id, type, invitation.user_request_id);
+                    if (success) {
+                        alert(`Invitation from ${invitation.name} ${type === 0 ? 'accepted' : 'declined'}.`);
+                        e.currentTarget.closest('.invite').remove();
+                        allInvitations.splice(index, 1);
+                    }
+                });
+            });
+        }
+
+        function initInvitationManager() {
+            seeMoreButton.addEventListener('click', loadMoreInvitations);
+            loadMoreInvitations();
+        }
+
+        initInvitationManager();
+
+
+    </script>
+</body>
+
+</html>

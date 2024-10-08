@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Mailer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Monda:wght@400..700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Roboto", system-ui;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px 0;
+            display: block;
+        }
+
+        body,
+        table,
+        td,
+        a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        table,
+        td {
+            border-collapse: collapse !important;
+        }
+
+        img {
+            border: 0;
+            line-height: 100%;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        tbody.text-container {
+            padding: 30px 50px;
+            display: block;
+        }
+
+        tbody.text-container p {
+            margin-bottom: 15px;
+            font-size: 22px;
+            line-height: 33px;
+        }
+
+        tbody.text-container p.wm {
+            margin-bottom: 0;
+        }
+
+        table.footer {
+            width: 100%;
+            background-color: #fff4e9;
+            padding: 40px 15px;
+            display: block;
+        }
+
+        table.footer>tbody {
+            width: 100%;
+            display: block;
+            position: relative;
+        }
+
+        table.footer>tbody>tr {
+            width: 100%;
+            display: block;
+        }
+
+        tr.footer-top-border img {
+            width: 100%;
+            position: relative;
+            top: 10px;
+        }
+
+        tr.social-icons {
+            text-align: center;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        tr.social-icons td {
+            margin: 0 20px;
+            display: inline-block;
+        }
+
+        tr.social-icons td a {
+            display: block;
+        }
+
+        tr.social-links {
+            margin: 0 auto;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        tr.social-links td {
+            display: inline-block;
+            margin: 0 20px;
+            text-align: center;
+        }
+
+        tr.social-links td a {
+            color: #000;
+            font-family: "Monda", system-ui;
+            font-size: 16px;
+            display: block;
+        }
+
+        tr.copyright-text {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        tr.copyright-text td {
+            width: 100%;
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        @media (max-width: 450px) {
+            tbody.text-container {
+                padding: 15px 25px;
+            }
+
+            tbody.text-container p {
+                font-size: 16px;
+                margin-bottom: 10px;
+                line-height: 22px;
+            }
+
+            tr.social-icons td {
+                margin: 0 10px;
+            }
+
+            tr.social-icons td a img {
+                width: 25px;
+                height: 25px;
+            }
+
+            tr.social-links td a {
+                font-size: 14px;
+            }
+
+            tr.social-links td {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <table class="container" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tbody style="display: block;">
+            <tr style="display: block;">
+                <td align="center" style="display: block;">
+                    <table border="0" cellspacing="0" cellpadding="0"
+                        style="background-color: #fffbf8; display: block; max-width: 800px; margin: 0 auto; width: 100%;">
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <!-- header img -->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table>
+                                        <tbody class="text-container">
+                                            <tr>
+                                                <td><strong>
+                                                        <p>Dear Sunil Paswan,</p>
+                                                    </strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>We’re excited to welcome you to the national-level quiz contest
+                                                        ‘Disrupto’! Thank you for registering your email with us.</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>You’re now part of an engaging journey that celebrates our rich
+                                                        culture, history, and diversity. Prepare for fun challenges,
+                                                        interesting facts, and the chance to showcase your knowledge!
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>If you have any questions, feel free to reach out.</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Visit <a href="{{link}}">Disrupto.in</a> for more insights and
+                                                        updates.</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p class="wm">Best wishes,</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Rakesh Thkaur</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr class="footer-top-border">
+                                <td>
+                                    <img src="https://cdn-microsites.indianexpress.com/img/public/images/5eb10b7115f7b73295fd.png"
+                                        alt="line">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table class="footer">
+                                        <tbody>
+                                            <tr class="social-icons">
+                                                <td>
+                                                    <a href="{{link}}"><img
+                                                            src="https://cdn-microsites.indianexpress.com/img/public/images/2e33b7dd2778cbf8f6f4.png"
+                                                            alt="Whatsapp"></a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{link}}"><img
+                                                            src="https://cdn-microsites.indianexpress.com/img/public/images/4b86db9ec593fd81f685.png"
+                                                            alt="Facebook"></a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{link}}"><img
+                                                            src="https://cdn-microsites.indianexpress.com/img/public/images/44210a32e6f9786ed4c9.png"
+                                                            alt="X"></a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{link}}"><img
+                                                            src="https://cdn-microsites.indianexpress.com/img/public/images/b34801087ce9f0a0a163.png"
+                                                            alt="Youtube"></a>
+                                                </td>
+                                            </tr>
+                                            <tr class="social-links">
+                                                <td>
+                                                    <a href="{{link}}">Contact Us</a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{link}}">About Us</a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{link}}">Unsubscribe</a>
+                                                </td>
+                                            </tr>
+                                            <tr class="copyright-text">
+                                                <td>Copyright © 2024 The Indian Express (P) Ltd. All Rights Reserved
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
